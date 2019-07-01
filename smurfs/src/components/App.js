@@ -11,8 +11,56 @@ import styled from 'styled-components';
  `How do I ensure that my component links the state to props?`
  */
 
+const DIV = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+`
+
+const FORM = styled.form`
+  width: 300px;
+  height: 250px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  background-color: lightgray;
+`
+
+const BUTTON = styled.button`
+  height: 3rem;
+  width: 8rem;
+  margin-top: 30px;
+`
+
+const INPUT = styled.input`
+  margin:3px;
+  align-items: flex-end;
+`
+
+const LABEL = styled.label`
+  margin:3px;
+  align-items: flex-end;
+`
+
+const UL = styled.ul`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 0;
+`
+
 const LI = styled.li`
   list-style: none;
+  background-color: lightskyblue;
+  width: 15rem;
+  border-radius: 5px;
+  margin: 5px;
  `
 
 class App extends Component {
@@ -28,7 +76,6 @@ class App extends Component {
 
   changeHandler = e => {
     this.setState({
-
       [e.target.name]: e.target.value
     })
   }
@@ -47,38 +94,38 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <form onSubmit={this.submitHandler}>
-          <label>
+      <DIV className="App">
+        <FORM onSubmit={this.submitHandler}>
+          <LABEL>
             Name:{' '}
-            <input
+            <INPUT
               type="text"
               name="name"
               value={this.state.name}
               onChange={this.changeHandler}
             />
-          </label>{' '}
-          <label>
+          </LABEL>{' '}
+          <LABEL>
             Age:{' '}
-            <input
+            <INPUT
               type="number"
               name="age"
               value={this.state.age}
               onChange={this.changeHandler}
             />
-          </label>{' '}
-          <label>
+          </LABEL>{' '}
+          <LABEL>
             Height:{' '}
-            <input
+            <INPUT
               type="text"
               name="height"
               value={this.state.height}
               onChange={this.changeHandler}
             />
-          </label>{' '}
-          <button type="submit">Add a Smurf</button>
-        </form>
-        <ul>
+          </LABEL>{' '}
+          <BUTTON type="submit">Add a Smurf</BUTTON>
+        </FORM>
+        <UL>
           {this.props.smurfs.map(smurf => (
             <LI key={smurf.id}>
               <h3>Name: {smurf.name}</h3>
@@ -86,8 +133,8 @@ class App extends Component {
               <p>Height: {smurf.height}</p>
             </LI>
           ))}
-        </ul>
-      </div>
+        </UL>
+      </DIV>
     );
   }
 }
